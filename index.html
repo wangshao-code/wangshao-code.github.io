@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>币圈导航</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg-color: #585B56;
+            --text-color: #fff;
+        }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: block;
+        }
+        .title {
+            text-align: center;
+            color: #000;
+            margin: 10px 0;
+        }
+        .subtitle {
+            text-align: center;
+            color: #2E302C;
+            margin-bottom: 30px;
+        }
+        .link-item {
+            background: var(--bg-color);
+            color: var(--text-color);
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .link-item:active {
+            transform: scale(0.98);
+        }
+        .link-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            margin-right: 15px;
+        }
+        .right-arrow {
+            margin-left: auto;
+            width: 20px;
+            height: 20px;
+        }
+        .warning {
+            border: 2px solid #ff4444;
+            background: #fff9f9;
+            color: #ff4444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://placehold.co/80x80" class="avatar" alt="头像">
+        <h1 class="title">币圈导航</h1>
+        <h2 class="subtitle">注册账号 下载应用 免费问题咨询</h2>
+
+        <!-- 修改后的交易所链接 -->
+        <div class="link-item" id="okxLink">
+            <img src="https://placehold.co/40x40" class="link-icon" alt="OKX">
+            <div>欧易交易所官网注册</div>
+            <svg class="right-arrow" viewBox="0 0 1024 1024">
+                <path fill="#fff" d="M827 512l-16-16-11-11-318-318-46 46 405 405-405 405 46 46 424-425z"/>
+            </svg>
+        </div>
+
+        <!-- 客服模块 -->
+        <div class="link-item warning" id="copyWechat">
+            <img src="https://placehold.co/40x40" class="link-icon" alt="客服">
+            <div>
+                ⚠️ 添加客服微信<br>
+                微信号：<span id="wechatId">shi1yue1</span>
+            </div>
+            <svg class="right-arrow" viewBox="0 0 512 512">
+                <path fill="#fff" d="M286 450H99a44 44 0 0 1-44-44V159a44 44 0 0 1 44-44h123a15 15 0 0 1 11 4l93 93a15 15 0 0 1 4 11V406a44 44 0 0 1-44 44z"/>
+            </svg>
+        </div>
+
+        <!-- 安全提示 -->
+        <div style="color:#666; font-size:0.8em; padding:15px;">
+            <p>⚠️ 安全提示：</p>
+            <ul>
+                <li>请通过官方渠道二次验证链接</li>
+                <li>不要向客服透露账户密码</li>
+                <li>推荐使用备用设备操作</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 欧易链接跳转逻辑
+        document.getElementById('okxLink').addEventListener('click', function(e) {
+            e.preventDefault()
+            // 直接跳转到指定链接（新标签页打开）
+            window.open('https://www.ouxyi.link/ul/6CngT5?channelId=95482476', '_blank')
+        })
+
+        // 保持原有的复制功能
+        document.getElementById('copyWechat').addEventListener('click', function(e) {
+            e.stopPropagation()
+            const text = document.getElementById('wechatId').innerText
+            navigator.clipboard.writeText(text)
+                .then(() => alert('微信号已复制'))
+                .catch(() => prompt('自动复制失败，请手动复制', text))
+        })
+
+        // 其他链接处理（示例）
+        document.querySelectorAll('.link-item:not(#okxLink):not(#copyWechat)').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault()
+                alert('其他链接待配置')
+            })
+        })
+    </script>
+</body>
+</html>
